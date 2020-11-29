@@ -33,7 +33,28 @@
   + 教师教授课程数量！=1，选课无法进行；  
   + 学生选择课程数量！=1，返回重新选课；  
   + 学生选择课程=教师教授课程=课程本身时，选课成功，打印学生信息、课程信息、教师信息；并且选课状态设置为1；  
-  + 当学生选课状态=1时，才能进行退课；退课状态=0，退课成功，输出学生信息，教师信息为空。
+  + 当学生选课状态=1时，才能进行退课；退课状态=0，退课成功，输出学生信息，教师信息为空。  
+  ```  
+  public void judge() {
+		if(tea.getCourse_num()==1) {
+			if(stu.getSelected_courses_num()!=1) {
+				System.out.println("每个学生只能选一门课程，您已超过，请返回重新选课！");
+			}else if(stu.getMajor()==course.getCourse_name()&&tea.getTea_course()==course.getCourse_name()){
+				this.stu.setState(1);
+				System.out.println("选课成功! 输出个人信息、课程信息与教师信息：");
+				System.out.println(stu1+"\n"+tea+"\n"+course);
+			}else if(this.stu.getState()!=1&&this.stu.getState()!=0){
+				System.out.println("未进行选课");
+			}if(stu.getState()==1) {
+				this.stu.setState(0);
+				System.out.println("成功选课，正在退课中..."+"\n"+"退课成功!");
+				System.out.println(stu1+"\n"+tea1);
+			}
+			}else {
+				System.out.println("授课教师重复，选课无法成功进行。");
+			}
+		}
+   ```  
 ## 实验结果
 学生选课成功，打印信息  
 退课成功，打印信息   
